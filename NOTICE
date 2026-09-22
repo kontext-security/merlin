@@ -1,0 +1,7 @@
+Merlin
+Copyright 2026 Kontext Security
+
+The released checkpoint is fine-tuned from microsoft/deberta-v3-xsmall, which is
+distributed under the MIT License. TS-Bench and its component datasets retain
+their upstream terms. See DATASETS.md and the Hugging Face model card.
+

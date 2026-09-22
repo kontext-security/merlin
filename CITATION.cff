@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "If you use Merlin, cite this software and the TS-Bench paper."
+title: "Merlin: Local Contextual Safety for Agent Tool Invocations"
+type: software
+authors:
+  - name: "Kontext Security"
+version: 0.1.0
+date-released: 2026-09-22
+url: "https://github.com/kontext-security/merlin"
+repository-code: "https://github.com/kontext-security/merlin"
+

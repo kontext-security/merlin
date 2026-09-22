@@ -1,0 +1,56 @@
+{
+  "schema_version": 1,
+  "checkpoint": "history_serialization/deberta_v3_xsmall",
+  "evaluation": {
+    "benchmark": "TS-Bench",
+    "n": 7182,
+    "label_policy": "strict_binary_0_safe_0.5_or_1_unsafe",
+    "threshold": 0.5,
+    "micro": {
+      "accuracy": 0.9118629908103593,
+      "precision": 0.9266195885784464,
+      "recall": 0.8845252051582649,
+      "f1": 0.9050832208726945,
+      "specificity": 0.936604774535809,
+      "mcc": 0.8236797425872459,
+      "tn": 3531,
+      "fp": 239,
+      "fn": 394,
+      "tp": 3018
+    },
+    "by_source": {
+      "ASB-Traj": {
+        "n": 5231,
+        "accuracy": 0.9973236474861403,
+        "precision": 0.9976312672720095,
+        "recall": 0.9968441814595661,
+        "f1": 0.9972375690607734
+      },
+      "AgentDojo-Traj": {
+        "n": 1220,
+        "accuracy": 0.7180327868852459,
+        "precision": 0.5114285714285715,
+        "recall": 0.5085227272727273,
+        "f1": 0.50997150997151
+      },
+      "AgentHarm-Traj": {
+        "n": 731,
+        "accuracy": 0.6238030095759234,
+        "precision": 0.8342245989304813,
+        "recall": 0.5942857142857143,
+        "f1": 0.6941045606229144
+      }
+    }
+  },
+  "systems": {
+    "device": "Apple Silicon MPS",
+    "artifact_size_mib": 278.03773021698,
+    "load_ms_p50": 463.958541,
+    "latency_ms_mean": 47.3204729921875,
+    "latency_ms_p50": 47.491187499999995,
+    "latency_ms_p95": 48.3532124,
+    "latency_ms_p99": 48.698758070000004,
+    "batch_throughput_samples_s": 23.004528574432566
+  }
+}
+

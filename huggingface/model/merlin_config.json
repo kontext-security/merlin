@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "model_name": "Merlin",
+  "task": "contextual_tool_invocation_safety",
+  "labels": {
+    "0": "safe",
+    "1": "unsafe"
+  },
+  "default_threshold": 0.5,
+  "calibration": {
+    "method": "sigmoid_on_unsafe_logit_margin",
+    "coefficient": 1.427213430140093,
+    "intercept": 2.953687013257505
+  },
+  "preprocessing": {
+    "max_length": 512,
+    "history": "thought_free_canonical_json",
+    "current_action": "tool_name_and_arguments",
+    "field_budgets": {
+      "request": 96,
+      "history": 144,
+      "action": 128,
+      "schema": 128
+    },
+    "field_markers": {
+      "request": "[USER_REQUEST]",
+      "history": "[INTERACTION_HISTORY]",
+      "action": "[CURRENT_ACTION]",
+      "schema": "[TOOL_DESCRIPTIONS]"
+    }
+  },
+  "base_model": {
+    "id": "microsoft/deberta-v3-xsmall",
+    "revision": "4b419818330868dff6a60ad3e6b1c730f8b8c0c6"
+  }
+}
+

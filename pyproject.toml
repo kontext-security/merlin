@@ -1,0 +1,44 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "merlin-guard"
+version = "0.1.0"
+description = "Local contextual safety classifier for agent tool invocations"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "Apache-2.0"}
+authors = [{name = "Kontext", email = "security@kontext.security"}]
+dependencies = [
+  "huggingface-hub>=0.29,<2",
+  "sentencepiece>=0.2,<1",
+  "torch>=2,<3",
+  "transformers>=5,<6",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8,<10",
+  "ruff>=0.9,<1",
+]
+
+[project.scripts]
+merlin = "merlin_guard.cli:main"
+
+[project.urls]
+Homepage = "https://kontext.security/blog/merlin"
+Repository = "https://github.com/kontext-security/merlin"
+Model = "https://huggingface.co/kontext-security/Merlin"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/merlin_guard"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
