@@ -9,6 +9,11 @@ The released checkpoint is a fully fine-tuned DeBERTa-v3-xsmall encoder with
 70.8M parameters. It runs without a hosted model or network request after the
 model has been downloaded.
 
+The portable checkpoint is published on Hugging Face at the
+[pinned Merlin v0.1 revision](https://huggingface.co/kontext-security/Merlin/tree/21b6f2cc381dd036160bf237877780bca72ceea5).
+The `model.safetensors` SHA-256 is
+`075d68f8bb4c1b4b98e2d2b2c0d5b013056b202172b080b34e7364b698844c86`.
+
 ## Quick start
 
 ```bash
@@ -131,4 +136,3 @@ The code in this repository is Apache-2.0. The checkpoint is derived from the
 MIT-licensed `microsoft/deberta-v3-xsmall` base model; its release card records
 the additional benchmark-data terms and limitations. Upstream datasets retain
 their own licenses and terms.
-
