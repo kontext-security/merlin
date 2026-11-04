@@ -7,3 +7,6 @@ dist/*
 !dist/.gitkeep
 .DS_Store
 
+
+# Native model assets are distributed on Hugging Face, never in Git.
+native/stepsafety/model/native/*.gz

@@ -1,5 +1,17 @@
 # Merlin
 
+**V3 ungated evaluation release:** the native Go runtime now includes the V3
+contextual encoder with the three restrictive eligibility gates removed. Model
+weights, threshold 0.5, action agreement and the complete-action 128-token limit
+are unchanged. See [V3 usage, evaluation and limitations](docs/V3_UNGATED.md) and
+[aggregate results](results/v3-ungated.json). Private evaluation examples are not
+included in this repository or the Hugging Face package.
+
+The Python package and checkpoint instructions below describe **legacy v0.1**.
+They do not implement V3; use the native runtime linked above for V3.
+
+## Legacy v0.1
+
 Merlin is a small, local classifier for **contextual safety at the moment an AI
 agent invokes a tool**. It considers the user's request, prior tool activity,
 the proposed tool call, and the available tool descriptions, then returns a
