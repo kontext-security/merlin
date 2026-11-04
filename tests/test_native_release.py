@@ -24,6 +24,9 @@ def test_staging_ignores_private_files_and_pins_assets(tmp_path, monkeypatch):
         (public / directory).mkdir(parents=True)
     for relative in ["LICENSE", "NOTICE", "huggingface/v3/README.md", "results/v3-ungated.json"]:
         (public / relative).write_text("{}")
+    (public / "native/stepsafety/model/native/private-captures.json").write_text(
+        "PRIVATE EXAMPLE MUST NOT LEAK"
+    )
     assets.mkdir()
     (assets / "weights.00.gz").write_bytes(b"weights")
     (assets / "private-transcripts.json").write_text("PRIVATE EXAMPLE MUST NOT LEAK")
@@ -39,6 +42,7 @@ def test_staging_ignores_private_files_and_pins_assets(tmp_path, monkeypatch):
     }
     (public / "native/stepsafety/model/native/manifest.json").write_text(json.dumps(pinned))
     monkeypatch.setattr(stage, "ROOT", public)
+    monkeypatch.setattr(stage, "NATIVE_FILES", ("stepsafety/model/native/manifest.json",))
     monkeypatch.setattr(stage, "ASSETS", ("weights.00.gz",))
     release = tmp_path / "release"
     manifest = stage.stage(assets, release)

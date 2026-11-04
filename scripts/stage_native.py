@@ -21,6 +21,41 @@ ASSETS = (
 )
 
 
+NATIVE_FILES = (
+    "cmd/merlin/main.go",
+    "go.mod",
+    "go.sum",
+    "stepsafety/agreement.go",
+    "stepsafety/context.go",
+    "stepsafety/model/ATTRIBUTION.md",
+    "stepsafety/model/LICENSE",
+    "stepsafety/model/PROVENANCE.json",
+    "stepsafety/model/native/PROVENANCE.json",
+    "stepsafety/model/native/candidate.json",
+    "stepsafety/model/native/manifest.json",
+    "stepsafety/modelstore.go",
+    "stepsafety/native_assets.go",
+    "stepsafety/native_assets_nomodel.go",
+    "stepsafety/native_backend.go",
+    "stepsafety/native_linear_arm64.go",
+    "stepsafety/native_linear_arm64.s",
+    "stepsafety/native_linear_generic.go",
+    "stepsafety/native_model.go",
+    "stepsafety/native_weights.go",
+    "stepsafety/native_workspace.go",
+    "stepsafety/normalization.go",
+    "stepsafety/packing.go",
+    "stepsafety/request_gate.go",
+    "stepsafety/runtime_artifacts.go",
+    "stepsafety/runtime_store.go",
+    "stepsafety/scoped.go",
+    "stepsafety/tokenizer.go",
+    "stepsafety/types.go",
+    "stepsafety/unicode9.go",
+    "stepsafety/unigram.go",
+)
+
+
 def digest(path: Path) -> str:
     h = hashlib.sha256()
     with path.open("rb") as f:
@@ -34,21 +69,7 @@ def stage(assets: Path, output: Path) -> dict:
         raise ValueError("Use a new output directory to prevent stale files entering the release")
     provenance = json.loads((ROOT / "native/stepsafety/model/native/manifest.json").read_text())
     pinned = {row["name"]: row for row in provenance["files"]}
-    selected = [
-        (p, Path("native") / p.relative_to(ROOT / "native"))
-        for pattern in (
-            "*.mod",
-            "*.sum",
-            "stepsafety/*.go",
-            "stepsafety/*.s",
-            "stepsafety/model/*.json",
-            "stepsafety/model/*.md",
-            "stepsafety/model/LICENSE",
-            "stepsafety/model/native/*.json",
-            "cmd/merlin/*.go",
-        )
-        for p in sorted((ROOT / "native").glob(pattern))
-    ]
+    selected = [(ROOT / "native" / name, Path("native") / name) for name in NATIVE_FILES]
     selected += [
         (ROOT / "huggingface/v3/README.md", Path("README.md")),
         (ROOT / "results/v3-ungated.json", Path("evaluation.json")),
